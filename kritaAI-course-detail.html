@@ -491,62 +491,6 @@
             font-weight: 300;
         }
 
-        /* 创意展示区域 */
-        .creative-showcase {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin-bottom: 80px;
-        }
-
-        .creative-item {
-            position: relative;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            transition: all 0.4s ease;
-        }
-
-        .creative-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
-        }
-
-        .creative-item img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .creative-item:hover img {
-            transform: scale(1.05);
-        }
-
-        .creative-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 30px;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
-        }
-
-        .creative-overlay h3 {
-            color: #ffd700;
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 10px;
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
-        }
-
-        .creative-overlay p {
-            color: #fff;
-            font-size: 1rem;
-            opacity: 0.9;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
-        }
-        
         /* 联系区域 */
         .contact-section {
             margin: 40px 0;
@@ -794,27 +738,6 @@
             .poster-subtitle {
                 font-size: 0.8rem;
             }
-
-            .creative-showcase {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-
-            .creative-item {
-                height: 250px;
-            }
-
-            .creative-overlay {
-                padding: 20px;
-            }
-
-            .creative-overlay h3 {
-                font-size: 1.2rem;
-            }
-
-            .creative-overlay p {
-                font-size: 0.9rem;
-            }
         }
     </style>
 </head>
@@ -853,26 +776,6 @@
                 <div class="poster-overlay">
                     <h3 class="poster-title">KritaAI让创意表达更加容易</h3>
                     <p class="poster-subtitle">从线稿到成品的完美蜕变</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- 创意展示区域 -->
-        <div class="content-section">
-            <div class="creative-showcase">
-                <div class="creative-item">
-                    <img src="创意进化·一镜到底风格海报.png" alt="创意进化海报">
-                    <div class="creative-overlay">
-                        <h3>创意进化</h3>
-                        <p>从线稿到成品的完美蜕变</p>
-                    </div>
-                </div>
-                <div class="creative-item">
-                    <img src="让创意执笔即可见.png" alt="让创意执笔即可见">
-                    <div class="creative-overlay">
-                        <h3>执笔即可见</h3>
-                        <p>实时创意表达，所见即所得</p>
-                    </div>
                 </div>
             </div>
         </div>

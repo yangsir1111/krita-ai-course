@@ -139,251 +139,412 @@
             padding: 60px 20px;
         }
         
-        /* 课程信息卡片 */
+        /* 课程信息卡片 - 更大气的设计 */
         .course-info {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-bottom: 60px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-bottom: 80px;
         }
-        
+
         .info-card {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 30px;
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.08);
+            padding: 40px 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
             text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
-        
+
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .info-card:hover::before {
+            left: 100%;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(255, 215, 0, 0.2);
+            border-color: rgba(255, 215, 0, 0.3);
+        }
+
         .info-card h3 {
             color: #ffd700;
-            margin-bottom: 15px;
-            font-size: 1.2rem;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
             font-weight: 600;
+            position: relative;
+            z-index: 2;
         }
-        
+
         .info-card p {
             color: #e0e0e0;
-            font-size: 1rem;
+            font-size: 1.1rem;
             opacity: 0.9;
+            position: relative;
+            z-index: 2;
         }
-        
-        /* 内容区域 */
+
+        /* 内容区域 - 更大气的间距 */
         .content-section {
-            margin-bottom: 60px;
+            margin-bottom: 80px;
         }
-        
+
         .section-title {
-            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            font-size: clamp(2rem, 6vw, 3rem);
             color: #ffd700;
-            margin-bottom: 30px;
-            font-weight: 600;
-            letter-spacing: -0.01em;
+            margin-bottom: 40px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            text-align: center;
         }
-        
+
         .section-content {
             color: #e0e0e0;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             line-height: 1.8;
-            max-width: 800px;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
         }
-        
-        /* 课程大纲 */
+
+        /* 课程大纲 - 更大气的设计 */
         .curriculum {
-            margin-top: 30px;
+            margin-top: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        
+
         .curriculum-item {
-            padding: 25px;
+            padding: 30px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transition: background 0.3s;
+            transition: all 0.3s ease;
         }
-        
+
         .curriculum-item:last-child {
             border-bottom: none;
         }
-        
+
         .curriculum-item:hover {
-            background: rgba(255, 215, 0, 0.05);
+            background: rgba(255, 215, 0, 0.08);
+            transform: translateX(10px);
         }
-        
+
         .curriculum-content h4 {
             color: #ffd700;
-            margin-bottom: 8px;
-            font-size: 1.1rem;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
             font-weight: 600;
         }
-        
+
         .curriculum-content p {
             color: #b0b0b0;
-            font-size: 0.95rem;
+            font-size: 1rem;
         }
-        
+
         .curriculum-duration {
             background: linear-gradient(135deg, #ffd700, #ff8c00);
             color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 500;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
         }
-        
-        /* 讲师介绍 */
+
+        /* 讲师介绍 - 更大气的设计 */
         .instructor {
             display: flex;
             align-items: center;
-            gap: 30px;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 40px;
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
+            gap: 40px;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 50px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
         }
-        
+
         .instructor-avatar {
-            width: 80px;
-            height: 80px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
             background: linear-gradient(135deg, #ffd700, #ff8c00);
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 2rem;
+            font-size: 2.5rem;
             font-weight: bold;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
         }
-        
+
         .instructor-info h4 {
             color: #ffd700;
-            margin-bottom: 10px;
-            font-size: 1.4rem;
-            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 1.6rem;
+            font-weight: 700;
         }
-        
+
         .instructor-info p {
             color: #e0e0e0;
-            margin-bottom: 20px;
-            line-height: 1.6;
+            margin-bottom: 25px;
+            line-height: 1.7;
+            font-size: 1.1rem;
         }
-        
+
         .instructor-stats {
             display: flex;
-            gap: 30px;
+            gap: 40px;
         }
-        
+
         .stat {
             text-align: center;
         }
-        
+
         .stat-number {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: bold;
             color: #ffd700;
         }
-        
+
         .stat-label {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: #b0b0b0;
         }
-        
-        /* FAQ样式 */
+
+        /* FAQ样式 - 更大气的设计 */
         .faq-section {
-            margin-top: 30px;
+            margin-top: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        
+
         .faq-item {
-            margin-bottom: 25px;
-            padding-bottom: 25px;
+            margin-bottom: 30px;
+            padding-bottom: 30px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
-        
+
         .faq-item:last-child {
             border-bottom: none;
             margin-bottom: 0;
         }
-        
+
         .faq-question {
             color: #ffd700;
             font-weight: 600;
-            margin-bottom: 12px;
-            font-size: 1.1rem;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
         }
-        
+
         .faq-answer {
             color: #e0e0e0;
-            font-size: 1rem;
-            line-height: 1.6;
+            font-size: 1.1rem;
+            line-height: 1.7;
         }
-        
-        /* 报名区域 */
+
+        /* 报名区域 - 更大气的设计 */
         .enroll-section {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 50px;
-            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 60px;
+            border-radius: 25px;
             text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
         }
-        
+
         .enroll-section h3 {
-            font-size: clamp(2rem, 6vw, 3rem);
-            margin-bottom: 20px;
-            color: #ffd700;
-            font-weight: 600;
-        }
-        
-        .price {
             font-size: clamp(2.5rem, 8vw, 4rem);
+            margin-bottom: 25px;
+            color: #ffd700;
+            font-weight: 700;
+        }
+
+        .price {
+            font-size: clamp(3rem, 10vw, 5rem);
             font-weight: bold;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             color: #ffd700;
         }
-        
+
         .price small {
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             opacity: 0.7;
             color: #b0b0b0;
         }
-        
+
         .features {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin: 40px 0;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin: 50px 0;
         }
-        
+
         .feature {
             text-align: center;
-            padding: 20px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
         }
-        
+
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.2);
+        }
+
         .feature-icon {
-            width: 60px;
-            height: 60px;
-            background: rgba(255, 215, 0, 0.1);
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 215, 0, 0.15);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 15px;
-            font-size: 1.5rem;
-            border: 1px solid rgba(255, 215, 0, 0.2);
+            margin: 0 auto 20px;
+            font-size: 2rem;
+            border: 2px solid rgba(255, 215, 0, 0.3);
         }
-        
+
         .feature h4 {
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             color: #ffd700;
             font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        .feature p {
+            opacity: 0.9;
+            font-size: 1rem;
+            color: #e0e0e0;
         }
         
-        .feature p {
-            opacity: 0.8;
-            font-size: 0.9rem;
-            color: #e0e0e0;
+        /* 创意海报展示 */
+        .poster-showcase {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 80px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+        }
+
+        .creative-poster {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px;
+            transition: transform 0.5s ease;
+        }
+
+        .poster-showcase:hover .creative-poster {
+            transform: scale(1.02);
+        }
+
+        .poster-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 40px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
+
+        .poster-title {
+            color: #fff;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+            letter-spacing: -0.02em;
+        }
+
+        .poster-subtitle {
+            color: #fff;
+            font-size: 1.2rem;
+            opacity: 0.95;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+            font-weight: 300;
+        }
+
+        /* 创意展示区域 */
+        .creative-showcase {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        .creative-item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s ease;
+        }
+
+        .creative-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+        }
+
+        .creative-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .creative-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .creative-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+        }
+
+        .creative-overlay h3 {
+            color: #ffd700;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .creative-overlay p {
+            color: #fff;
+            font-size: 1rem;
+            opacity: 0.9;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
         }
         
         /* 联系区域 */
@@ -573,49 +734,6 @@
             transform: translateY(-2px);
         }
         
-        /* 创意海报展示 */
-        .poster-showcase {
-            position: relative;
-            width: 100%;
-            height: 400px; /* Adjust height as needed */
-            border-radius: 16px;
-            overflow: hidden;
-            margin-bottom: 60px;
-        }
-
-        .creative-poster {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 16px;
-        }
-
-        .poster-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 20px;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
-            border-bottom-left-radius: 16px;
-            border-bottom-right-radius: 16px;
-        }
-
-        .poster-title {
-            color: #fff;
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        .poster-subtitle {
-            color: #fff;
-            font-size: 1rem;
-            opacity: 0.9;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-        }
-        
         /* 响应式设计 */
         @media (max-width: 768px) {
             .container {
@@ -676,6 +794,27 @@
             .poster-subtitle {
                 font-size: 0.8rem;
             }
+
+            .creative-showcase {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .creative-item {
+                height: 250px;
+            }
+
+            .creative-overlay {
+                padding: 20px;
+            }
+
+            .creative-overlay h3 {
+                font-size: 1.2rem;
+            }
+
+            .creative-overlay p {
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
@@ -712,8 +851,28 @@
             <div class="poster-showcase">
                 <img src="创意进化·一镜到底风格海报.png" alt="KritaAI创意进化海报" class="creative-poster">
                 <div class="poster-overlay">
-                    <h3 class="poster-title">创意进化 · 一镜到底</h3>
+                    <h3 class="poster-title">KritaAI让创意表达更加容易</h3>
                     <p class="poster-subtitle">从线稿到成品的完美蜕变</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 创意展示区域 -->
+        <div class="content-section">
+            <div class="creative-showcase">
+                <div class="creative-item">
+                    <img src="创意进化·一镜到底风格海报.png" alt="创意进化海报">
+                    <div class="creative-overlay">
+                        <h3>创意进化</h3>
+                        <p>从线稿到成品的完美蜕变</p>
+                    </div>
+                </div>
+                <div class="creative-item">
+                    <img src="让创意执笔即可见.png" alt="让创意执笔即可见">
+                    <div class="creative-overlay">
+                        <h3>执笔即可见</h3>
+                        <p>实时创意表达，所见即所得</p>
+                    </div>
                 </div>
             </div>
         </div>

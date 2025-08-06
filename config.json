@@ -3,7 +3,7 @@
     "name": "Krita AI 数字艺术创作课程",
     "description": "掌握AI辅助数字绘画技巧，提升创作效率",
     "url": "https://your-domain.com",
-    "author": "张艺谋",
+    "author": "杨瑞云",
     "email": "contact@your-domain.com"
   },
   "course": {
@@ -11,10 +11,10 @@
     "duration": "24小时",
     "level": "初级到中级",
     "price": 299,
-    "originalPrice": 599,
+    "originalPrice": 699,
     "currency": "CNY",
     "instructor": {
-      "name": "张艺谋",
+      "name": "杨瑞云",
       "title": "资深数字艺术家",
       "experience": "10年Krita使用经验",
       "specialty": "AI辅助绘画技术研究",
@@ -43,7 +43,7 @@
     "weibo": "your-weibo-account"
   },
   "contact": {
-    "email": "contact@your-domain.com",
+    "email": "670862735@qq.com",
     "phone": "+86-xxx-xxxx-xxxx",
     "address": "北京市朝阳区xxx街道xxx号"
   }

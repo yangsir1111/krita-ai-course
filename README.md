@@ -26,7 +26,7 @@ yang/瑞云、/
    git add .
    git commit -m "Initial commit"
    git branch -M main
-   git remote add origin https://github.com/你的用户名/krita-ai-course.git
+   git remote add origin https://github.com/yangsir/krita-ai-course.git
    git push -u origin main
    ```
 
@@ -39,7 +39,7 @@ yang/瑞云、/
 
 4. **访问网站**
    - 网站将在几分钟后可用
-   - 地址格式：`https://你的用户名.github.io/krita-ai-course/`
+   - 地址格式：`https://yangsir.github.io/krita-ai-course/`
 
 ### 方法二：Netlify（免费）
 

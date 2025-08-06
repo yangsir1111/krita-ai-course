@@ -774,6 +774,145 @@
             color: #ccc;
         }
         
+        /* 联系区域样式 */
+        .contact-section {
+            margin: 30px 0;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        
+        .brand-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .boat-icon {
+            font-size: 2.5rem;
+            color: #ffd700;
+        }
+        
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .brand-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ffd700;
+            letter-spacing: 1px;
+        }
+        
+        .brand-subtitle {
+            font-size: 0.8rem;
+            color: #ccc;
+            opacity: 0.8;
+        }
+        
+        .instructor-info {
+            text-align: right;
+        }
+        
+        .instructor-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #00ffff;
+            margin-bottom: 5px;
+        }
+        
+        .location {
+            font-size: 0.9rem;
+            color: #ccc;
+            opacity: 0.8;
+        }
+        
+        .qr-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .qr-code {
+            width: 120px;
+            height: 120px;
+            background: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .qr-placeholder {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .qr-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(90deg, #000 1px, transparent 1px),
+                linear-gradient(0deg, #000 1px, transparent 1px);
+            background-size: 8px 8px;
+            opacity: 0.3;
+        }
+        
+        .qr-logo {
+            position: relative;
+            z-index: 2;
+            background: white;
+            border-radius: 4px;
+            padding: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .qr-boat {
+            font-size: 1rem;
+        }
+        
+        .qr-brand {
+            font-size: 0.6rem;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .qr-instruction {
+            color: #fff;
+            font-size: 0.9rem;
+            text-align: center;
+            opacity: 0.9;
+        }
+        
         /* 响应式设计 */
         @media (max-width: 768px) {
             header h1 {
@@ -808,6 +947,20 @@
             
             .features {
                 grid-template-columns: 1fr;
+            }
+            
+            .brand-info {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+            
+            .instructor-info {
+                text-align: center;
+            }
+            
+            .contact-section {
+                padding: 20px;
             }
         }
     </style>
@@ -1145,8 +1298,35 @@
                 </div>
             </div>
 
+            <div class="contact-section">
+                <div class="brand-info">
+                    <div class="brand-logo">
+                        <div class="boat-icon">🚢</div>
+                        <div class="brand-text">
+                            <div class="brand-name">WAKERO®</div>
+                            <div class="brand-subtitle">ANIMATION STUDIOS</div>
+                        </div>
+                    </div>
+                    <div class="instructor-info">
+                        <div class="instructor-name">微客行动画 | 杨瑞云</div>
+                        <div class="location">湖北 武汉</div>
+                    </div>
+                </div>
+                
+                <div class="qr-section">
+                    <div class="qr-code">
+                        <div class="qr-placeholder">
+                            <div class="qr-logo">
+                                <div class="qr-boat">🚢</div>
+                                <div class="qr-brand">WAKERO®</div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="qr-instruction">扫一扫上面的二维码图案，加我为朋友</p>
+                </div>
+            </div>
+
             <a href="#" class="btn">立即报名</a>
-            <a href="#" class="btn btn-secondary">免费试听</a>
         </section>
     </div>
 </body>

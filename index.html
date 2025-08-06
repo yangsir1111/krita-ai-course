@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KritaAI 辅助设计入门课</title>
+    <title>KritaAI 数字艺术革命 - AI辅助绘画大师课</title>
     <style>
         * {
             margin: 0;
@@ -20,7 +20,7 @@
             position: relative;
         }
         
-        /* 背景装饰元素 */
+        /* 动态背景 */
         body::before {
             content: '';
             position: fixed;
@@ -29,14 +29,22 @@
             width: 100%;
             height: 100%;
             background: 
-                radial-gradient(circle at 20% 80%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(0, 255, 255, 0.1) 0%, transparent 50%);
+                radial-gradient(circle at 20% 80%, rgba(0, 255, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 215, 0, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255, 0, 255, 0.1) 0%, transparent 50%);
             pointer-events: none;
             z-index: 1;
+            animation: backgroundShift 20s ease-in-out infinite;
         }
         
-        /* 发光线条 */
-        .glow-lines {
+        @keyframes backgroundShift {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            33% { transform: scale(1.1) rotate(1deg); }
+            66% { transform: scale(0.9) rotate(-1deg); }
+        }
+        
+        /* 粒子系统 */
+        .particles {
             position: fixed;
             top: 0;
             left: 0;
@@ -46,44 +54,103 @@
             z-index: 2;
         }
         
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #00ffff;
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+            box-shadow: 0 0 10px #00ffff;
+        }
+        
+        .particle:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .particle:nth-child(2) { left: 20%; animation-delay: 1s; }
+        .particle:nth-child(3) { left: 30%; animation-delay: 2s; }
+        .particle:nth-child(4) { left: 40%; animation-delay: 3s; }
+        .particle:nth-child(5) { left: 50%; animation-delay: 4s; }
+        .particle:nth-child(6) { left: 60%; animation-delay: 5s; }
+        .particle:nth-child(7) { left: 70%; animation-delay: 0.5s; }
+        .particle:nth-child(8) { left: 80%; animation-delay: 1.5s; }
+        .particle:nth-child(9) { left: 90%; animation-delay: 2.5s; }
+        .particle:nth-child(10) { left: 15%; animation-delay: 3.5s; }
+        .particle:nth-child(11) { left: 25%; animation-delay: 4.5s; }
+        .particle:nth-child(12) { left: 35%; animation-delay: 5.5s; }
+        .particle:nth-child(13) { left: 45%; animation-delay: 0.2s; }
+        .particle:nth-child(14) { left: 55%; animation-delay: 1.2s; }
+        .particle:nth-child(15) { left: 65%; animation-delay: 2.2s; }
+        
+        @keyframes float {
+            0%, 100% { 
+                transform: translateY(100vh) scale(0.5);
+                opacity: 0;
+            }
+            10% { 
+                opacity: 1;
+                transform: translateY(90vh) scale(1);
+            }
+            90% { 
+                opacity: 1;
+                transform: translateY(10vh) scale(1);
+            }
+        }
+        
+        /* 发光线条增强版 */
+        .glow-lines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 3;
+        }
+        
         .glow-line {
             position: absolute;
-            background: linear-gradient(90deg, transparent, #00ffff, transparent);
-            height: 2px;
+            background: linear-gradient(90deg, transparent, #00ffff, #ffd700, #00ffff, transparent);
+            height: 3px;
             border-radius: 50%;
-            animation: glow 3s ease-in-out infinite;
+            animation: glowEnhanced 4s ease-in-out infinite;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
         }
         
         .glow-line:nth-child(1) {
-            width: 300px;
-            top: 20%;
-            left: -100px;
+            width: 400px;
+            top: 15%;
+            left: -150px;
             transform: rotate(15deg);
             animation-delay: 0s;
         }
         
         .glow-line:nth-child(2) {
-            width: 200px;
-            top: 60%;
-            right: -50px;
-            transform: rotate(-20deg);
-            animation-delay: 1s;
-        }
-        
-        .glow-line:nth-child(3) {
-            width: 250px;
-            bottom: 30%;
-            left: 10%;
-            transform: rotate(45deg);
+            width: 300px;
+            top: 65%;
+            right: -100px;
+            transform: rotate(-25deg);
             animation-delay: 2s;
         }
         
-        @keyframes glow {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 1; }
+        .glow-line:nth-child(3) {
+            width: 350px;
+            bottom: 25%;
+            left: 5%;
+            transform: rotate(60deg);
+            animation-delay: 4s;
         }
         
-        /* 星星背景 */
+        @keyframes glowEnhanced {
+            0%, 100% { 
+                opacity: 0.2; 
+                transform: scaleX(0.8);
+            }
+            50% { 
+                opacity: 1; 
+                transform: scaleX(1.2);
+            }
+        }
+        
+        /* 星星背景增强 */
         .stars {
             position: fixed;
             top: 0;
@@ -96,11 +163,12 @@
         
         .star {
             position: absolute;
-            width: 2px;
-            height: 2px;
+            width: 3px;
+            height: 3px;
             background: white;
             border-radius: 50%;
-            animation: twinkle 2s ease-in-out infinite;
+            animation: twinkleEnhanced 3s ease-in-out infinite;
+            box-shadow: 0 0 5px white;
         }
         
         .star:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
@@ -111,10 +179,18 @@
         .star:nth-child(6) { top: 60%; left: 90%; animation-delay: 0.8s; }
         .star:nth-child(7) { top: 70%; left: 40%; animation-delay: 1.2s; }
         .star:nth-child(8) { top: 80%; left: 60%; animation-delay: 0.7s; }
+        .star:nth-child(9) { top: 15%; left: 50%; animation-delay: 0.2s; }
+        .star:nth-child(10) { top: 85%; left: 15%; animation-delay: 1.8s; }
         
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.3; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.2); }
+        @keyframes twinkleEnhanced {
+            0%, 100% { 
+                opacity: 0.2; 
+                transform: scale(0.5) rotate(0deg);
+            }
+            50% { 
+                opacity: 1; 
+                transform: scale(1.5) rotate(180deg);
+            }
         }
         
         .container {
@@ -126,58 +202,122 @@
             text-align: center;
         }
         
-        /* 主标题 */
+        /* 主标题 - 3D效果 */
         .main-title {
-            margin-bottom: 40px;
+            margin-bottom: 60px;
+            perspective: 1000px;
         }
         
         .title {
-            font-size: 4rem;
+            font-size: 5rem;
             font-weight: bold;
-            background: linear-gradient(135deg, #ffd700 0%, #ff8c00 50%, #ffd700 100%);
+            background: linear-gradient(135deg, #ffd700 0%, #ff8c00 25%, #ff6b6b 50%, #4ecdc4 75%, #ffd700 100%);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
-            text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+            text-shadow: 
+                0 0 30px rgba(255, 215, 0, 0.8),
+                0 0 60px rgba(255, 215, 0, 0.4),
+                0 0 90px rgba(255, 215, 0, 0.2);
             margin-bottom: 20px;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
+            animation: titleGlow 3s ease-in-out infinite;
+            transform-style: preserve-3d;
+            transition: transform 0.3s ease;
+        }
+        
+        .title:hover {
+            transform: rotateY(10deg) rotateX(5deg);
+        }
+        
+        @keyframes titleGlow {
+            0%, 100% { 
+                text-shadow: 
+                    0 0 30px rgba(255, 215, 0, 0.8),
+                    0 0 60px rgba(255, 215, 0, 0.4),
+                    0 0 90px rgba(255, 215, 0, 0.2);
+            }
+            50% { 
+                text-shadow: 
+                    0 0 50px rgba(255, 215, 0, 1),
+                    0 0 100px rgba(255, 215, 0, 0.6),
+                    0 0 150px rgba(255, 215, 0, 0.4);
+            }
         }
         
         .subtitle {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             color: #ffffff;
             opacity: 0.9;
             font-weight: 300;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
+            animation: subtitleFloat 4s ease-in-out infinite;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
         }
         
-        /* 课程总览Banner */
+        @keyframes subtitleFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        /* 课程总览Banner增强 */
         .course-banner {
-            margin: 40px 0;
+            margin: 60px 0;
             text-align: center;
             position: relative;
             overflow: hidden;
+            animation: bannerPulse 5s ease-in-out infinite;
+        }
+        
+        @keyframes bannerPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
         }
         
         .banner-content {
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             z-index: 3;
             position: relative;
         }
         
         .banner-title {
-            font-size: 2rem;
+            font-size: 2.5rem;
             color: #ffd700;
-            margin-bottom: 10px;
-            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+            margin-bottom: 15px;
+            text-shadow: 
+                0 0 30px rgba(255, 215, 0, 0.8),
+                0 0 60px rgba(255, 215, 0, 0.4);
             font-weight: bold;
+            animation: titleShine 2s ease-in-out infinite;
+        }
+        
+        @keyframes titleShine {
+            0%, 100% { 
+                background: linear-gradient(90deg, #ffd700, #ff8c00, #ffd700);
+                background-clip: text;
+                -webkit-background-clip: text;
+                color: transparent;
+            }
+            50% { 
+                background: linear-gradient(90deg, #ff8c00, #ffd700, #ff8c00);
+                background-clip: text;
+                -webkit-background-clip: text;
+                color: transparent;
+            }
         }
         
         .banner-subtitle {
-            font-size: 1.1rem;
+            font-size: 1.3rem;
             color: #00ffff;
             opacity: 0.9;
             margin-bottom: 0;
+            text-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+            animation: subtitleGlow 3s ease-in-out infinite;
+        }
+        
+        @keyframes subtitleGlow {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
         }
         
         .course-banner::before {
@@ -187,30 +327,47 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(0, 255, 255, 0.1) 0%, rgba(255, 215, 0, 0.1) 100%);
-            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.15) 0%, rgba(255, 215, 0, 0.15) 100%);
+            border-radius: 20px;
             z-index: -1;
+            animation: backgroundPulse 4s ease-in-out infinite;
+        }
+        
+        @keyframes backgroundPulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 0.8; }
         }
         
         .banner-image {
             max-width: 100%;
             height: auto;
-            border-radius: 16px;
-            box-shadow: 0 12px 40px rgba(0, 255, 255, 0.3);
-            border: 2px solid rgba(0, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
+            border-radius: 20px;
+            box-shadow: 
+                0 15px 50px rgba(0, 255, 255, 0.4),
+                0 0 100px rgba(0, 255, 255, 0.2);
+            border: 3px solid rgba(0, 255, 255, 0.3);
+            backdrop-filter: blur(15px);
+            transition: all 0.5s ease;
             position: relative;
             z-index: 2;
+            animation: imageFloat 6s ease-in-out infinite;
+        }
+        
+        @keyframes imageFloat {
+            0%, 100% { transform: translateY(0px) rotateY(0deg); }
+            25% { transform: translateY(-5px) rotateY(1deg); }
+            75% { transform: translateY(5px) rotateY(-1deg); }
         }
         
         .banner-image:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 60px rgba(0, 255, 255, 0.4);
-            border-color: rgba(0, 255, 255, 0.4);
+            transform: translateY(-10px) scale(1.02) rotateY(5deg);
+            box-shadow: 
+                0 25px 80px rgba(0, 255, 255, 0.6),
+                0 0 150px rgba(0, 255, 255, 0.4);
+            border-color: rgba(0, 255, 255, 0.6);
         }
         
-        /* Banner装饰元素 */
+        /* Banner装饰元素增强 */
         .banner-decoration {
             position: absolute;
             top: 50%;
@@ -224,155 +381,226 @@
         
         .banner-glow {
             position: absolute;
-            width: 200px;
-            height: 200px;
-            background: radial-gradient(circle, rgba(0, 255, 255, 0.2) 0%, transparent 70%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 255, 255, 0.3) 0%, transparent 70%);
             border-radius: 50%;
-            animation: bannerGlow 4s ease-in-out infinite;
+            animation: bannerGlowEnhanced 6s ease-in-out infinite;
         }
         
         .banner-glow:nth-child(1) {
-            top: 10%;
-            left: 10%;
+            top: 5%;
+            left: 5%;
             animation-delay: 0s;
         }
         
         .banner-glow:nth-child(2) {
-            bottom: 10%;
-            right: 10%;
-            animation-delay: 2s;
+            bottom: 5%;
+            right: 5%;
+            animation-delay: 3s;
         }
         
-        @keyframes bannerGlow {
-            0%, 100% { opacity: 0.3; transform: scale(1); }
-            50% { opacity: 0.6; transform: scale(1.1); }
+        @keyframes bannerGlowEnhanced {
+            0%, 100% { 
+                opacity: 0.2; 
+                transform: scale(0.8) rotate(0deg);
+            }
+            50% { 
+                opacity: 0.8; 
+                transform: scale(1.3) rotate(180deg);
+            }
         }
         
-        /* 课程特色 */
+        /* 课程特色增强 */
         .course-features {
-            margin: 60px 0;
+            margin: 80px 0;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
         }
         
         .feature-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 30px;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.08);
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 40px;
+            backdrop-filter: blur(15px);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .feature-card:hover::before {
+            left: 100%;
         }
         
         .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.2);
-            border-color: rgba(0, 255, 255, 0.3);
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 
+                0 20px 50px rgba(0, 255, 255, 0.3),
+                0 0 100px rgba(0, 255, 255, 0.2);
+            border-color: rgba(0, 255, 255, 0.4);
         }
         
         .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
+            font-size: 4rem;
+            margin-bottom: 25px;
+            animation: iconBounce 2s ease-in-out infinite;
+        }
+        
+        @keyframes iconBounce {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
         }
         
         .feature-card h3 {
             color: #ffd700;
-            font-size: 1.5rem;
-            margin-bottom: 15px;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
         }
         
         .feature-card p {
             color: #ccc;
-            line-height: 1.6;
+            line-height: 1.8;
+            font-size: 1.1rem;
         }
         
-        /* 导航按钮 */
+        /* 导航按钮增强 */
         .nav-links {
             display: flex;
-            gap: 30px;
+            gap: 40px;
             justify-content: center;
-            margin-top: 60px;
+            margin-top: 80px;
             flex-wrap: wrap;
         }
         
         .btn {
             display: inline-block;
-            padding: 18px 40px;
-            background: linear-gradient(135deg, rgba(0, 255, 255, 0.2) 0%, rgba(255, 215, 0, 0.2) 100%);
+            padding: 20px 50px;
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.3) 0%, rgba(255, 215, 0, 0.3) 100%);
             color: white;
             text-decoration: none;
-            border-radius: 12px;
-            border: 2px solid rgba(0, 255, 255, 0.3);
-            font-weight: 500;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 20px rgba(0, 255, 255, 0.2);
+            border-radius: 15px;
+            border: 3px solid rgba(0, 255, 255, 0.4);
+            font-weight: 600;
+            font-size: 1.2rem;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(15px);
+            box-shadow: 
+                0 8px 30px rgba(0, 255, 255, 0.3),
+                0 0 50px rgba(0, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .btn:hover::before {
+            left: 100%;
         }
         
         .btn:hover {
-            background: linear-gradient(135deg, rgba(0, 255, 255, 0.3) 0%, rgba(255, 215, 0, 0.3) 100%);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(0, 255, 255, 0.4);
-            border-color: rgba(0, 255, 255, 0.6);
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.5) 0%, rgba(255, 215, 0, 0.5) 100%);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 
+                0 15px 50px rgba(0, 255, 255, 0.5),
+                0 0 100px rgba(0, 255, 255, 0.3);
+            border-color: rgba(0, 255, 255, 0.7);
         }
         
-        /* 作者信息 */
+        /* 作者信息增强 */
         .author-info {
-            margin-top: 60px;
-            padding: 30px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
+            margin-top: 80px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
+            animation: authorGlow 4s ease-in-out infinite;
+        }
+        
+        @keyframes authorGlow {
+            0%, 100% { 
+                box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
+            }
+            50% { 
+                box-shadow: 0 20px 50px rgba(255, 215, 0, 0.4);
+            }
         }
         
         .author-info h3 {
             color: #ffd700;
-            font-size: 1.5rem;
-            margin-bottom: 15px;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
         }
         
         .author-details {
             display: flex;
             justify-content: center;
-            gap: 40px;
+            gap: 50px;
             flex-wrap: wrap;
         }
         
         .author-detail {
             text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .author-detail:hover {
+            transform: scale(1.1);
         }
         
         .author-detail h4 {
             color: #00ffff;
-            font-size: 1.1rem;
-            margin-bottom: 5px;
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
         }
         
         .author-detail p {
             color: #ffffff;
-            opacity: 0.8;
-            font-size: 0.9rem;
+            opacity: 0.9;
+            font-size: 1rem;
         }
         
         /* 响应式设计 */
         @media (max-width: 768px) {
             .title {
-                font-size: 2.5rem;
+                font-size: 3rem;
             }
             
             .subtitle {
-                font-size: 1.2rem;
+                font-size: 1.3rem;
             }
             
             .banner-title {
-                font-size: 1.5rem;
+                font-size: 2rem;
             }
             
             .banner-subtitle {
-                font-size: 1rem;
+                font-size: 1.1rem;
             }
             
             .course-features {
@@ -386,14 +614,40 @@
             
             .btn {
                 width: 100%;
-                max-width: 300px;
+                max-width: 350px;
+            }
+            
+            .author-details {
+                flex-direction: column;
+                gap: 30px;
             }
         }
     </style>
 </head>
 <body>
+    <!-- 粒子系统 -->
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+    
     <!-- 背景装饰 -->
     <div class="stars">
+        <div class="star"></div>
+        <div class="star"></div>
         <div class="star"></div>
         <div class="star"></div>
         <div class="star"></div>
@@ -413,8 +667,8 @@
     <div class="container">
         <!-- 主标题 -->
         <div class="main-title">
-            <h1 class="title">KritaAI</h1>
-            <p class="subtitle">辅助设计入门课</p>
+            <h1 class="title">数字艺术革命</h1>
+            <p class="subtitle">AI辅助绘画大师课</p>
         </div>
         
         <!-- 课程总览Banner -->
@@ -433,19 +687,19 @@
         <!-- 课程特色 -->
         <div class="course-features">
             <div class="feature-card">
-                <div class="feature-icon">🎨</div>
-                <h3>AI绘画</h3>
-                <p>利用AI技术，快速生成高质量的绘画作品。</p>
+                <div class="feature-icon">🚀</div>
+                <h3>AI绘画革命</h3>
+                <p>利用最新AI技术，快速生成高质量绘画作品，让创作效率提升10倍。</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">🛠️</div>
-                <h3>智能工具</h3>
-                <p>提供多种智能工具，提升绘画效率和创意。</p>
+                <div class="feature-icon">⚡</div>
+                <h3>智能工具集</h3>
+                <p>提供多种智能工具，从线稿到上色，从构图到细节，全面提升绘画效率。</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">👩‍🎨</div>
-                <h3>个性化指导</h3>
-                <p>针对不同绘画风格，提供专业的指导和建议。</p>
+                <div class="feature-icon">🎯</div>
+                <h3>专业指导</h3>
+                <p>针对不同绘画风格，提供专业的指导和建议，助您成为数字艺术大师。</p>
             </div>
         </div>
         

@@ -473,6 +473,33 @@
             </div>
         </section>
 
+        <section class="download-card">
+            <div class="download-item">
+                <h3>📖 安装文档</h3>
+                <p>详细的KritaAI安装指南，包含本地部署和云端部署的完整步骤说明，帮助您快速完成环境配置。</p>
+                
+                <div class="download-info">
+                    <h4>📋 文档内容：</h4>
+                    <ul>
+                        <li>系统环境要求</li>
+                        <li>本地安装步骤</li>
+                        <li>云端部署配置</li>
+                        <li>常见问题解答</li>
+                        <li>故障排除指南</li>
+                    </ul>
+                </div>
+                
+                <div class="link-info">
+                    <p><strong>文档链接：</strong> https://c15n3bcfcqs.feishu.cn/docx/ZeTkdl8J2oHF36xW009c9yFXnBh</p>
+                </div>
+                
+                <a href="https://c15n3bcfcqs.feishu.cn/docx/ZeTkdl8J2oHF36xW009c9yFXnBh" target="_blank" class="download-link">
+                    📖 查看文档
+                </a>
+                <button class="copy-btn" onclick="copyDocLink()">📋 复制链接</button>
+            </div>
+        </section>
+
         <section class="features-section">
             <h3>✨ 为什么选择 KritaAI？</h3>
             <div class="features-grid">
@@ -523,6 +550,21 @@
             if (navigator.clipboard) {
                 navigator.clipboard.writeText(text).then(() => {
                     alert('链接已复制到剪贴板！');
+                }).catch(() => {
+                    fallbackCopyTextToClipboard(text);
+                });
+            } else {
+                fallbackCopyTextToClipboard(text);
+            }
+        }
+        
+        function copyDocLink() {
+            const link = 'https://c15n3bcfcqs.feishu.cn/docx/ZeTkdl8J2oHF36xW009c9yFXnBh';
+            const text = `KritaAI安装文档：${link}`;
+            
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(text).then(() => {
+                    alert('文档链接已复制到剪贴板！');
                 }).catch(() => {
                     fallbackCopyTextToClipboard(text);
                 });

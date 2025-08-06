@@ -9,18 +9,19 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            font-family: 'PingFang SC', 'Microsoft YaHei', -apple-system, BlinkMacSystemFont, sans-serif;
         }
         
         body {
-            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0a0e27 100%);
-            color: #fff;
-            line-height: 1.6;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            color: #ffffff;
+            min-height: 100vh;
             overflow-x: hidden;
             position: relative;
+            line-height: 1.6;
         }
         
-        /* 背景装饰元素 */
+        /* 简洁的背景装饰 */
         body::before {
             content: '';
             position: fixed;
@@ -29,14 +30,14 @@
             width: 100%;
             height: 100%;
             background: 
-                radial-gradient(circle at 20% 80%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(0, 255, 255, 0.1) 0%, transparent 50%);
+                radial-gradient(circle at 20% 80%, rgba(255, 215, 0, 0.02) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 140, 0, 0.02) 0%, transparent 50%);
             pointer-events: none;
             z-index: 1;
         }
         
-        /* 发光线条 */
-        .glow-lines {
+        /* 微妙的粒子效果 */
+        .particles {
             position: fixed;
             top: 0;
             left: 0;
@@ -46,75 +47,29 @@
             z-index: 2;
         }
         
-        .glow-line {
+        .particle {
             position: absolute;
-            background: linear-gradient(90deg, transparent, #00ffff, transparent);
-            height: 2px;
+            width: 1px;
+            height: 1px;
+            background: #ffd700;
             border-radius: 50%;
-            animation: glow 3s ease-in-out infinite;
+            animation: float 20s ease-in-out infinite;
+            opacity: 0.2;
         }
         
-        .glow-line:nth-child(1) {
-            width: 300px;
-            top: 20%;
-            left: -100px;
-            transform: rotate(15deg);
-            animation-delay: 0s;
-        }
+        .particle:nth-child(1) { left: 15%; animation-delay: 0s; }
+        .particle:nth-child(2) { left: 45%; animation-delay: 5s; }
+        .particle:nth-child(3) { left: 75%; animation-delay: 10s; }
         
-        .glow-line:nth-child(2) {
-            width: 200px;
-            top: 60%;
-            right: -50px;
-            transform: rotate(-20deg);
-            animation-delay: 1s;
-        }
-        
-        .glow-line:nth-child(3) {
-            width: 250px;
-            bottom: 30%;
-            left: 10%;
-            transform: rotate(45deg);
-            animation-delay: 2s;
-        }
-        
-        @keyframes glow {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 1; }
-        }
-        
-        /* 星星背景 */
-        .stars {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-        }
-        
-        .star {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: white;
-            border-radius: 50%;
-            animation: twinkle 2s ease-in-out infinite;
-        }
-        
-        .star:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
-        .star:nth-child(2) { top: 20%; left: 80%; animation-delay: 0.5s; }
-        .star:nth-child(3) { top: 30%; left: 30%; animation-delay: 1s; }
-        .star:nth-child(4) { top: 40%; left: 70%; animation-delay: 1.5s; }
-        .star:nth-child(5) { top: 50%; left: 20%; animation-delay: 0.3s; }
-        .star:nth-child(6) { top: 60%; left: 90%; animation-delay: 0.8s; }
-        .star:nth-child(7) { top: 70%; left: 40%; animation-delay: 1.2s; }
-        .star:nth-child(8) { top: 80%; left: 60%; animation-delay: 0.7s; }
-        
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.3; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.2); }
+        @keyframes float {
+            0%, 100% { 
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+            10%, 90% { 
+                opacity: 0.2;
+                transform: translateY(90vh) scale(1);
+            }
         }
         
         .container {
@@ -122,56 +77,38 @@
             z-index: 10;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 60px 20px;
         }
         
-        header {
+        /* 主标题 */
+        .main-title {
             text-align: center;
-            padding: 40px 0;
+            margin-bottom: 80px;
         }
         
-        header h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
+        .title {
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 700;
             background: linear-gradient(135deg, #ffd700 0%, #ff8c00 50%, #ffd700 100%);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
-            text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
-            letter-spacing: 2px;
-        }
-        
-        header p {
-            font-size: 1.3rem;
-            color: #ccc;
-            opacity: 0.9;
-        }
-        
-        .download-hero {
-            background: linear-gradient(135deg, rgba(0, 255, 255, 0.1) 0%, rgba(255, 215, 0, 0.1) 100%);
-            border: 1px solid rgba(0, 255, 255, 0.3);
-            border-radius: 16px;
-            color: #fff;
-            overflow: hidden;
-            position: relative;
-            padding: 60px 40px;
-            margin-bottom: 40px;
-            text-align: center;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 8px 32px rgba(0, 255, 255, 0.2);
-        }
-        
-        .download-hero h2 {
-            font-size: 2.5rem;
             margin-bottom: 20px;
-            color: #ffd700;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
         }
         
-        .download-hero p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            color: #fff;
+        .subtitle {
+            font-size: clamp(1.2rem, 4vw, 1.8rem);
+            color: #e0e0e0;
+            font-weight: 300;
+            letter-spacing: 0.02em;
             opacity: 0.9;
+        }
+        
+        /* 下载卡片 */
+        .download-section {
+            margin-bottom: 60px;
         }
         
         .download-card {
@@ -181,55 +118,48 @@
             padding: 40px;
             margin-bottom: 30px;
             backdrop-filter: blur(10px);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
-        .download-item {
-            background: rgba(0, 255, 255, 0.1);
-            border: 1px solid rgba(0, 255, 255, 0.2);
-            border-radius: 12px;
-            padding: 30px;
-            margin-bottom: 20px;
-            transition: all 0.3s ease;
+        .download-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
         }
         
-        .download-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.3);
-            border-color: rgba(0, 255, 255, 0.4);
-        }
-        
-        .download-item h3 {
+        .download-title {
+            font-size: clamp(1.5rem, 4vw, 2rem);
             color: #ffd700;
-            font-size: 1.5rem;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            font-weight: 600;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
         
-        .download-item h3::before {
+        .download-title::before {
             content: '📦';
             font-size: 1.8rem;
         }
         
-        .download-item p {
-            color: #ccc;
-            margin-bottom: 20px;
-            line-height: 1.6;
+        .download-description {
+            color: #e0e0e0;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 25px;
         }
         
         .download-info {
             background: rgba(0, 0, 0, 0.3);
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 20px;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
         }
         
         .download-info h4 {
-            color: #00ffff;
-            margin-bottom: 10px;
+            color: #ffd700;
+            margin-bottom: 15px;
             font-size: 1.1rem;
+            font-weight: 600;
         }
         
         .download-info ul {
@@ -238,165 +168,232 @@
         }
         
         .download-info li {
-            color: #fff;
-            margin-bottom: 8px;
-            padding-left: 20px;
+            color: #e0e0e0;
+            margin-bottom: 10px;
+            padding-left: 25px;
             position: relative;
+            font-size: 1rem;
         }
         
         .download-info li::before {
             content: '✓';
             position: absolute;
             left: 0;
-            color: #00ffff;
+            color: #ffd700;
             font-weight: bold;
         }
         
-        .download-link {
-            display: inline-block;
-            background: linear-gradient(135deg, rgba(0, 255, 255, 0.3) 0%, rgba(255, 215, 0, 0.3) 100%);
-            color: #fff;
-            text-decoration: none;
-            padding: 15px 30px;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            border: 2px solid rgba(0, 255, 255, 0.5);
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            margin: 10px;
-        }
-        
-        .download-link:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(0, 255, 255, 0.4);
-            background: linear-gradient(135deg, rgba(0, 255, 255, 0.4) 0%, rgba(255, 215, 0, 0.4) 100%);
-        }
-        
-        .copy-btn {
-            background: rgba(255, 255, 255, 0.1);
-            color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            padding: 8px 16px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-            margin-left: 10px;
-        }
-        
-        .copy-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
-            border-color: rgba(255, 255, 255, 0.5);
-        }
-        
         .link-info {
-            background: rgba(0, 255, 255, 0.1);
-            border: 1px solid rgba(0, 255, 255, 0.2);
-            border-radius: 8px;
-            padding: 15px;
-            margin-top: 15px;
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 25px;
         }
         
         .link-info p {
-            color: #fff;
-            margin-bottom: 5px;
-            font-size: 0.9rem;
+            color: #e0e0e0;
+            margin-bottom: 8px;
+            font-size: 1rem;
         }
         
         .link-info strong {
-            color: #00ffff;
+            color: #ffd700;
         }
         
-        .features-section {
+        .download-actions {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .download-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 32px;
+            background: rgba(255, 215, 0, 0.1);
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .download-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .download-link:hover::before {
+            left: 100%;
+        }
+        
+        .download-link:hover {
+            background: rgba(255, 215, 0, 0.2);
+            border-color: rgba(255, 215, 0, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
+        }
+        
+        .copy-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 24px;
             background: rgba(255, 255, 255, 0.05);
+            color: #ffffff;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 40px;
-            margin-bottom: 30px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             backdrop-filter: blur(10px);
         }
         
-        .features-section h3 {
+        .copy-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        /* 特性展示 */
+        .features-section {
+            margin-bottom: 60px;
+        }
+        
+        .section-title {
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
             color: #ffd700;
-            font-size: 1.8rem;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             text-align: center;
+            font-weight: 600;
+            letter-spacing: -0.01em;
         }
         
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
         }
         
         .feature-item {
-            background: rgba(0, 255, 255, 0.1);
-            border: 1px solid rgba(0, 255, 255, 0.2);
-            border-radius: 12px;
-            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 30px;
             text-align: center;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
         }
         
         .feature-item:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0, 255, 255, 0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
         }
         
         .feature-icon {
             font-size: 2.5rem;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
         
         .feature-item h4 {
             color: #ffd700;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             font-size: 1.2rem;
+            font-weight: 600;
         }
         
         .feature-item p {
-            color: #ccc;
-            font-size: 0.9rem;
-            line-height: 1.5;
+            color: #e0e0e0;
+            font-size: 1rem;
+            line-height: 1.6;
         }
         
+        /* 导航链接 */
         .nav-links {
             display: flex;
-            gap: 20px;
+            gap: 30px;
             justify-content: center;
-            margin-top: 40px;
+            margin-top: 60px;
             flex-wrap: wrap;
         }
         
         .btn {
-            display: inline-block;
-            padding: 15px 30px;
-            background: linear-gradient(135deg, rgba(0, 255, 255, 0.2) 0%, rgba(255, 215, 0, 0.2) 100%);
-            color: white;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 18px 40px;
+            background: rgba(255, 255, 255, 0.05);
+            color: #ffffff;
             text-decoration: none;
             border-radius: 12px;
-            border: 2px solid rgba(0, 255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             font-weight: 500;
             font-size: 1.1rem;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             backdrop-filter: blur(10px);
+            min-width: 180px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .btn:hover::before {
+            left: 100%;
         }
         
         .btn:hover {
-            background: linear-gradient(135deg, rgba(0, 255, 255, 0.3) 0%, rgba(255, 215, 0, 0.3) 100%);
+            background: rgba(255, 215, 0, 0.1);
+            border-color: rgba(255, 215, 0, 0.3);
             transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(0, 255, 255, 0.4);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
         }
         
         /* 响应式设计 */
         @media (max-width: 768px) {
-            header h1 {
-                font-size: 2rem;
+            .container {
+                padding: 40px 20px;
             }
             
-            .download-hero h2 {
-                font-size: 1.8rem;
+            .main-title {
+                margin-bottom: 60px;
+            }
+            
+            .download-card {
+                padding: 30px 20px;
+            }
+            
+            .download-actions {
+                flex-direction: column;
+            }
+            
+            .download-link,
+            .copy-btn {
+                width: 100%;
+                justify-content: center;
             }
             
             .features-grid {
@@ -406,49 +403,56 @@
             .nav-links {
                 flex-direction: column;
                 align-items: center;
+                margin-top: 40px;
+                gap: 20px;
             }
             
             .btn {
                 width: 100%;
                 max-width: 300px;
+                padding: 16px 32px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 15px;
+            }
+            
+            .title {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- 背景装饰 -->
-    <div class="stars">
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-    </div>
-    
-    <div class="glow-lines">
-        <div class="glow-line"></div>
-        <div class="glow-line"></div>
-        <div class="glow-line"></div>
+    <!-- 微妙的粒子效果 -->
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
     </div>
     
     <div class="container">
-        <header>
-            <h1>KritaAI 免费资源下载</h1>
-            <p>获取最新版本的KritaAI本地部署安装包</p>
-        </header>
-
-        <section class="download-hero">
-            <h2>🚀 立即下载 KritaAI</h2>
-            <p>免费获取KritaAI本地部署安装包，开始您的AI辅助设计之旅</p>
-        </section>
-
-        <section class="download-card">
-            <div class="download-item">
-                <h3>KritaAI 本地部署安装包</h3>
-                <p>完整的KritaAI本地部署解决方案，包含所有必要的组件和配置文件，让您轻松在本地环境中运行AI辅助设计工具。</p>
+        <!-- 主标题 -->
+        <div class="main-title">
+            <h1 class="title">KritaAI 免费资源下载</h1>
+            <p class="subtitle">获取最新版本的KritaAI本地部署安装包</p>
+        </div>
+        
+        <!-- 下载区域 -->
+        <div class="download-section">
+            <div class="download-card">
+                <h2 class="download-title">KritaAI 本地部署安装包</h2>
+                <p class="download-description">完整的KritaAI本地部署解决方案，包含所有必要的组件和配置文件，让您轻松在本地环境中运行AI辅助设计工具。</p>
                 
                 <div class="download-info">
                     <h4>📋 包含内容：</h4>
@@ -457,7 +461,6 @@
                         <li>AI模型文件</li>
                         <li>配置文件</li>
                         <li>安装说明文档</li>
-                       
                     </ul>
                 </div>
                 
@@ -466,17 +469,17 @@
                     <p><strong>提取码：</strong> vrnj</p>
                 </div>
                 
-                <a href="https://pan.baidu.com/s/16reF__QOLvWr2lJscQtD-Q?pwd=vrnj" target="_blank" class="download-link">
-                    📥 立即下载
-                </a>
-                <button class="copy-btn" onclick="copyLink()">📋 复制链接</button>
+                <div class="download-actions">
+                    <a href="https://pan.baidu.com/s/16reF__QOLvWr2lJscQtD-Q?pwd=vrnj" target="_blank" class="download-link">
+                        📥 立即下载
+                    </a>
+                    <button class="copy-btn" onclick="copyLink()">📋 复制链接</button>
+                </div>
             </div>
-        </section>
-
-        <section class="download-card">
-            <div class="download-item">
-                <h3>📖 安装文档</h3>
-                <p>详细的KritaAI安装指南，包含本地部署和云端部署的完整步骤说明，帮助您快速完成环境配置。</p>
+            
+            <div class="download-card">
+                <h2 class="download-title">📖 安装文档</h2>
+                <p class="download-description">详细的KritaAI安装指南，包含本地部署和云端部署的完整步骤说明，帮助您快速完成环境配置。</p>
                 
                 <div class="download-info">
                     <h4>📋 文档内容：</h4>
@@ -493,15 +496,18 @@
                     <p><strong>文档链接：</strong> https://c15n3bcfcqs.feishu.cn/docx/ZeTkdl8J2oHF36xW009c9yFXnBh</p>
                 </div>
                 
-                <a href="https://c15n3bcfcqs.feishu.cn/docx/ZeTkdl8J2oHF36xW009c9yFXnBh" target="_blank" class="download-link">
-                    📖 查看文档
-                </a>
-                <button class="copy-btn" onclick="copyDocLink()">📋 复制链接</button>
+                <div class="download-actions">
+                    <a href="https://c15n3bcfcqs.feishu.cn/docx/ZeTkdl8J2oHF36xW009c9yFXnBh" target="_blank" class="download-link">
+                        📖 查看文档
+                    </a>
+                    <button class="copy-btn" onclick="copyDocLink()">📋 复制链接</button>
+                </div>
             </div>
-        </section>
-
-        <section class="features-section">
-            <h3>✨ 为什么选择 KritaAI？</h3>
+        </div>
+        
+        <!-- 特性展示 -->
+        <div class="features-section">
+            <h2 class="section-title">✨ 为什么选择 KritaAI？</h2>
             <div class="features-grid">
                 <div class="feature-item">
                     <div class="feature-icon">🎨</div>
@@ -534,8 +540,9 @@
                     <p>活跃的开发者社区，提供技术支持和问题解答</p>
                 </div>
             </div>
-        </section>
-
+        </div>
+        
+        <!-- 导航链接 -->
         <div class="nav-links">
             <a href="index.html" class="btn">🏠 返回主页</a>
             <a href="kritaAI-course-detail.html" class="btn">📚 课程详情</a>

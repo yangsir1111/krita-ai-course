@@ -29,18 +29,18 @@
             width: 100%;
             height: 100%;
             background: 
-                radial-gradient(circle at 20% 80%, rgba(0, 255, 255, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255, 215, 0, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(255, 0, 255, 0.1) 0%, transparent 50%);
+                radial-gradient(circle at 20% 80%, rgba(255, 215, 0, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 140, 0, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255, 69, 0, 0.06) 0%, transparent 50%);
             pointer-events: none;
             z-index: 1;
-            animation: backgroundShift 20s ease-in-out infinite;
+            animation: backgroundShift 25s ease-in-out infinite;
         }
         
         @keyframes backgroundShift {
             0%, 100% { transform: scale(1) rotate(0deg); }
-            33% { transform: scale(1.1) rotate(1deg); }
-            66% { transform: scale(0.9) rotate(-1deg); }
+            33% { transform: scale(1.05) rotate(0.5deg); }
+            66% { transform: scale(0.95) rotate(-0.5deg); }
         }
         
         /* 粒子系统 */
@@ -56,12 +56,12 @@
         
         .particle {
             position: absolute;
-            width: 4px;
-            height: 4px;
-            background: #00ffff;
+            width: 3px;
+            height: 3px;
+            background: #ffd700;
             border-radius: 50%;
-            animation: float 6s ease-in-out infinite;
-            box-shadow: 0 0 10px #00ffff;
+            animation: float 8s ease-in-out infinite;
+            box-shadow: 0 0 8px #ffd700;
         }
         
         .particle:nth-child(1) { left: 10%; animation-delay: 0s; }
@@ -82,20 +82,20 @@
         
         @keyframes float {
             0%, 100% { 
-                transform: translateY(100vh) scale(0.5);
+                transform: translateY(100vh) scale(0.3);
                 opacity: 0;
             }
             10% { 
-                opacity: 1;
+                opacity: 0.8;
                 transform: translateY(90vh) scale(1);
             }
             90% { 
-                opacity: 1;
+                opacity: 0.8;
                 transform: translateY(10vh) scale(1);
             }
         }
         
-        /* 发光线条增强版 */
+        /* 发光线条优化 */
         .glow-lines {
             position: fixed;
             top: 0;
@@ -108,49 +108,49 @@
         
         .glow-line {
             position: absolute;
-            background: linear-gradient(90deg, transparent, #00ffff, #ffd700, #00ffff, transparent);
-            height: 3px;
+            background: linear-gradient(90deg, transparent, #ffd700, #ff8c00, #ffd700, transparent);
+            height: 2px;
             border-radius: 50%;
-            animation: glowEnhanced 4s ease-in-out infinite;
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+            animation: glowEnhanced 6s ease-in-out infinite;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
         }
         
         .glow-line:nth-child(1) {
-            width: 400px;
-            top: 15%;
-            left: -150px;
+            width: 300px;
+            top: 20%;
+            left: -100px;
             transform: rotate(15deg);
             animation-delay: 0s;
         }
         
         .glow-line:nth-child(2) {
-            width: 300px;
-            top: 65%;
-            right: -100px;
-            transform: rotate(-25deg);
-            animation-delay: 2s;
+            width: 250px;
+            top: 70%;
+            right: -80px;
+            transform: rotate(-20deg);
+            animation-delay: 3s;
         }
         
         .glow-line:nth-child(3) {
-            width: 350px;
-            bottom: 25%;
-            left: 5%;
-            transform: rotate(60deg);
-            animation-delay: 4s;
+            width: 200px;
+            bottom: 20%;
+            left: 10%;
+            transform: rotate(45deg);
+            animation-delay: 6s;
         }
         
         @keyframes glowEnhanced {
             0%, 100% { 
-                opacity: 0.2; 
-                transform: scaleX(0.8);
+                opacity: 0.1; 
+                transform: scaleX(0.6);
             }
             50% { 
-                opacity: 1; 
-                transform: scaleX(1.2);
+                opacity: 0.6; 
+                transform: scaleX(1.1);
             }
         }
         
-        /* 星星背景增强 */
+        /* 星星背景优化 */
         .stars {
             position: fixed;
             top: 0;
@@ -163,12 +163,12 @@
         
         .star {
             position: absolute;
-            width: 3px;
-            height: 3px;
-            background: white;
+            width: 2px;
+            height: 2px;
+            background: #ffd700;
             border-radius: 50%;
-            animation: twinkleEnhanced 3s ease-in-out infinite;
-            box-shadow: 0 0 5px white;
+            animation: twinkleEnhanced 4s ease-in-out infinite;
+            box-shadow: 0 0 4px #ffd700;
         }
         
         .star:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
@@ -185,11 +185,11 @@
         @keyframes twinkleEnhanced {
             0%, 100% { 
                 opacity: 0.2; 
-                transform: scale(0.5) rotate(0deg);
+                transform: scale(0.8);
             }
             50% { 
-                opacity: 1; 
-                transform: scale(1.5) rotate(180deg);
+                opacity: 0.8; 
+                transform: scale(1.3);
             }
         }
         
@@ -202,7 +202,7 @@
             text-align: center;
         }
         
-        /* 主标题 - 3D效果 */
+        /* 主标题优化 */
         .main-title {
             margin-bottom: 60px;
             perspective: 1000px;
@@ -211,37 +211,34 @@
         .title {
             font-size: 5rem;
             font-weight: bold;
-            background: linear-gradient(135deg, #ffd700 0%, #ff8c00 25%, #ff6b6b 50%, #4ecdc4 75%, #ffd700 100%);
+            background: linear-gradient(135deg, #ffd700 0%, #ff8c00 25%, #ff6b6b 50%, #ff8c00 75%, #ffd700 100%);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
             text-shadow: 
-                0 0 30px rgba(255, 215, 0, 0.8),
-                0 0 60px rgba(255, 215, 0, 0.4),
-                0 0 90px rgba(255, 215, 0, 0.2);
+                0 0 30px rgba(255, 215, 0, 0.6),
+                0 0 60px rgba(255, 215, 0, 0.3);
             margin-bottom: 20px;
             letter-spacing: 3px;
-            animation: titleGlow 3s ease-in-out infinite;
+            animation: titleGlow 4s ease-in-out infinite;
             transform-style: preserve-3d;
             transition: transform 0.3s ease;
         }
         
         .title:hover {
-            transform: rotateY(10deg) rotateX(5deg);
+            transform: rotateY(8deg) rotateX(3deg);
         }
         
         @keyframes titleGlow {
             0%, 100% { 
                 text-shadow: 
-                    0 0 30px rgba(255, 215, 0, 0.8),
-                    0 0 60px rgba(255, 215, 0, 0.4),
-                    0 0 90px rgba(255, 215, 0, 0.2);
+                    0 0 30px rgba(255, 215, 0, 0.6),
+                    0 0 60px rgba(255, 215, 0, 0.3);
             }
             50% { 
                 text-shadow: 
-                    0 0 50px rgba(255, 215, 0, 1),
-                    0 0 100px rgba(255, 215, 0, 0.6),
-                    0 0 150px rgba(255, 215, 0, 0.4);
+                    0 0 40px rgba(255, 215, 0, 0.8),
+                    0 0 80px rgba(255, 215, 0, 0.4);
             }
         }
         
@@ -251,27 +248,27 @@
             opacity: 0.9;
             font-weight: 300;
             letter-spacing: 2px;
-            animation: subtitleFloat 4s ease-in-out infinite;
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+            animation: subtitleFloat 5s ease-in-out infinite;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
         }
         
         @keyframes subtitleFloat {
             0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+            50% { transform: translateY(-8px); }
         }
         
-        /* 课程总览Banner增强 */
+        /* 课程总览Banner优化 */
         .course-banner {
             margin: 60px 0;
             text-align: center;
             position: relative;
             overflow: hidden;
-            animation: bannerPulse 5s ease-in-out infinite;
+            animation: bannerPulse 6s ease-in-out infinite;
         }
         
         @keyframes bannerPulse {
             0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.02); }
+            50% { transform: scale(1.01); }
         }
         
         .banner-content {
@@ -285,10 +282,10 @@
             color: #ffd700;
             margin-bottom: 15px;
             text-shadow: 
-                0 0 30px rgba(255, 215, 0, 0.8),
-                0 0 60px rgba(255, 215, 0, 0.4);
+                0 0 25px rgba(255, 215, 0, 0.6),
+                0 0 50px rgba(255, 215, 0, 0.3);
             font-weight: bold;
-            animation: titleShine 2s ease-in-out infinite;
+            animation: titleShine 3s ease-in-out infinite;
         }
         
         @keyframes titleShine {
@@ -308,11 +305,11 @@
         
         .banner-subtitle {
             font-size: 1.3rem;
-            color: #00ffff;
+            color: #ff8c00;
             opacity: 0.9;
             margin-bottom: 0;
-            text-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
-            animation: subtitleGlow 3s ease-in-out infinite;
+            text-shadow: 0 0 12px rgba(255, 140, 0, 0.4);
+            animation: subtitleGlow 4s ease-in-out infinite;
         }
         
         @keyframes subtitleGlow {
@@ -320,54 +317,36 @@
             50% { opacity: 1; }
         }
         
-        .course-banner::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(0, 255, 255, 0.15) 0%, rgba(255, 215, 0, 0.15) 100%);
-            border-radius: 20px;
-            z-index: -1;
-            animation: backgroundPulse 4s ease-in-out infinite;
-        }
-        
-        @keyframes backgroundPulse {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 0.8; }
-        }
-        
         .banner-image {
             max-width: 100%;
             height: auto;
             border-radius: 20px;
             box-shadow: 
-                0 15px 50px rgba(0, 255, 255, 0.4),
-                0 0 100px rgba(0, 255, 255, 0.2);
-            border: 3px solid rgba(0, 255, 255, 0.3);
+                0 15px 50px rgba(255, 215, 0, 0.3),
+                0 0 80px rgba(255, 215, 0, 0.1);
+            border: 3px solid rgba(255, 215, 0, 0.2);
             backdrop-filter: blur(15px);
             transition: all 0.5s ease;
             position: relative;
             z-index: 2;
-            animation: imageFloat 6s ease-in-out infinite;
+            animation: imageFloat 8s ease-in-out infinite;
         }
         
         @keyframes imageFloat {
             0%, 100% { transform: translateY(0px) rotateY(0deg); }
-            25% { transform: translateY(-5px) rotateY(1deg); }
-            75% { transform: translateY(5px) rotateY(-1deg); }
+            25% { transform: translateY(-3px) rotateY(0.5deg); }
+            75% { transform: translateY(3px) rotateY(-0.5deg); }
         }
         
         .banner-image:hover {
-            transform: translateY(-10px) scale(1.02) rotateY(5deg);
+            transform: translateY(-8px) scale(1.01) rotateY(3deg);
             box-shadow: 
-                0 25px 80px rgba(0, 255, 255, 0.6),
-                0 0 150px rgba(0, 255, 255, 0.4);
-            border-color: rgba(0, 255, 255, 0.6);
+                0 20px 60px rgba(255, 215, 0, 0.4),
+                0 0 100px rgba(255, 215, 0, 0.2);
+            border-color: rgba(255, 215, 0, 0.4);
         }
         
-        /* Banner装饰元素增强 */
+        /* Banner装饰元素优化 */
         .banner-decoration {
             position: absolute;
             top: 50%;
@@ -381,37 +360,37 @@
         
         .banner-glow {
             position: absolute;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(0, 255, 255, 0.3) 0%, transparent 70%);
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.15) 0%, transparent 70%);
             border-radius: 50%;
-            animation: bannerGlowEnhanced 6s ease-in-out infinite;
+            animation: bannerGlowEnhanced 8s ease-in-out infinite;
         }
         
         .banner-glow:nth-child(1) {
-            top: 5%;
-            left: 5%;
+            top: 10%;
+            left: 10%;
             animation-delay: 0s;
         }
         
         .banner-glow:nth-child(2) {
-            bottom: 5%;
-            right: 5%;
-            animation-delay: 3s;
+            bottom: 10%;
+            right: 10%;
+            animation-delay: 4s;
         }
         
         @keyframes bannerGlowEnhanced {
             0%, 100% { 
-                opacity: 0.2; 
-                transform: scale(0.8) rotate(0deg);
+                opacity: 0.1; 
+                transform: scale(0.7) rotate(0deg);
             }
             50% { 
-                opacity: 0.8; 
-                transform: scale(1.3) rotate(180deg);
+                opacity: 0.4; 
+                transform: scale(1.2) rotate(90deg);
             }
         }
         
-        /* 课程特色增强 */
+        /* 课程特色优化 */
         .course-features {
             margin: 80px 0;
             display: grid;
@@ -420,8 +399,8 @@
         }
         
         .feature-card {
-            background: rgba(255, 255, 255, 0.08);
-            border: 2px solid rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.06);
+            border: 2px solid rgba(255, 215, 0, 0.15);
             border-radius: 20px;
             padding: 40px;
             backdrop-filter: blur(15px);
@@ -437,7 +416,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.08), transparent);
             transition: left 0.5s ease;
         }
         
@@ -446,38 +425,38 @@
         }
         
         .feature-card:hover {
-            transform: translateY(-10px) scale(1.05);
+            transform: translateY(-8px) scale(1.03);
             box-shadow: 
-                0 20px 50px rgba(0, 255, 255, 0.3),
-                0 0 100px rgba(0, 255, 255, 0.2);
-            border-color: rgba(0, 255, 255, 0.4);
+                0 20px 50px rgba(255, 215, 0, 0.2),
+                0 0 80px rgba(255, 215, 0, 0.1);
+            border-color: rgba(255, 215, 0, 0.3);
         }
         
         .feature-icon {
             font-size: 4rem;
             margin-bottom: 25px;
-            animation: iconBounce 2s ease-in-out infinite;
+            animation: iconBounce 3s ease-in-out infinite;
         }
         
         @keyframes iconBounce {
             0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+            50% { transform: translateY(-8px); }
         }
         
         .feature-card h3 {
             color: #ffd700;
             font-size: 1.8rem;
             margin-bottom: 20px;
-            text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+            text-shadow: 0 0 12px rgba(255, 215, 0, 0.4);
         }
         
         .feature-card p {
-            color: #ccc;
+            color: #e0e0e0;
             line-height: 1.8;
             font-size: 1.1rem;
         }
         
-        /* 导航按钮增强 */
+        /* 导航按钮优化 */
         .nav-links {
             display: flex;
             gap: 40px;
@@ -489,18 +468,18 @@
         .btn {
             display: inline-block;
             padding: 20px 50px;
-            background: linear-gradient(135deg, rgba(0, 255, 255, 0.3) 0%, rgba(255, 215, 0, 0.3) 100%);
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 140, 0, 0.2) 100%);
             color: white;
             text-decoration: none;
             border-radius: 15px;
-            border: 3px solid rgba(0, 255, 255, 0.4);
+            border: 3px solid rgba(255, 215, 0, 0.3);
             font-weight: 600;
             font-size: 1.2rem;
             transition: all 0.4s ease;
             backdrop-filter: blur(15px);
             box-shadow: 
-                0 8px 30px rgba(0, 255, 255, 0.3),
-                0 0 50px rgba(0, 255, 255, 0.1);
+                0 8px 30px rgba(255, 215, 0, 0.2),
+                0 0 50px rgba(255, 215, 0, 0.1);
             position: relative;
             overflow: hidden;
         }
@@ -512,7 +491,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.15), transparent);
             transition: left 0.5s ease;
         }
         
@@ -521,31 +500,31 @@
         }
         
         .btn:hover {
-            background: linear-gradient(135deg, rgba(0, 255, 255, 0.5) 0%, rgba(255, 215, 0, 0.5) 100%);
-            transform: translateY(-5px) scale(1.05);
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.3) 0%, rgba(255, 140, 0, 0.3) 100%);
+            transform: translateY(-4px) scale(1.03);
             box-shadow: 
-                0 15px 50px rgba(0, 255, 255, 0.5),
-                0 0 100px rgba(0, 255, 255, 0.3);
-            border-color: rgba(0, 255, 255, 0.7);
+                0 15px 50px rgba(255, 215, 0, 0.3),
+                0 0 80px rgba(255, 215, 0, 0.2);
+            border-color: rgba(255, 215, 0, 0.5);
         }
         
-        /* 作者信息增强 */
+        /* 作者信息优化 */
         .author-info {
             margin-top: 80px;
             padding: 40px;
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.06);
             border-radius: 20px;
-            border: 2px solid rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 215, 0, 0.15);
             backdrop-filter: blur(15px);
-            animation: authorGlow 4s ease-in-out infinite;
+            animation: authorGlow 5s ease-in-out infinite;
         }
         
         @keyframes authorGlow {
             0%, 100% { 
-                box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
+                box-shadow: 0 10px 30px rgba(255, 215, 0, 0.15);
             }
             50% { 
-                box-shadow: 0 20px 50px rgba(255, 215, 0, 0.4);
+                box-shadow: 0 20px 50px rgba(255, 215, 0, 0.25);
             }
         }
         
@@ -553,7 +532,7 @@
             color: #ffd700;
             font-size: 1.8rem;
             margin-bottom: 20px;
-            text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+            text-shadow: 0 0 12px rgba(255, 215, 0, 0.4);
         }
         
         .author-details {
@@ -569,18 +548,18 @@
         }
         
         .author-detail:hover {
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
         
         .author-detail h4 {
-            color: #00ffff;
+            color: #ff8c00;
             font-size: 1.3rem;
             margin-bottom: 8px;
-            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+            text-shadow: 0 0 8px rgba(255, 140, 0, 0.4);
         }
         
         .author-detail p {
-            color: #ffffff;
+            color: #e0e0e0;
             opacity: 0.9;
             font-size: 1rem;
         }

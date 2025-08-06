@@ -29,19 +29,19 @@
             width: 100%;
             height: 100%;
             background: 
-                radial-gradient(circle at 20% 80%, rgba(255, 215, 0, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255, 140, 0, 0.05) 0%, transparent 50%);
+                radial-gradient(circle at 20% 80%, rgba(255, 215, 0, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 140, 0, 0.03) 0%, transparent 50%);
             pointer-events: none;
             z-index: 1;
-            animation: backgroundShift 30s ease-in-out infinite;
+            animation: backgroundShift 40s ease-in-out infinite;
         }
         
         @keyframes backgroundShift {
             0%, 100% { transform: scale(1) rotate(0deg); }
-            50% { transform: scale(1.02) rotate(0.3deg); }
+            50% { transform: scale(1.01) rotate(0.2deg); }
         }
         
-        /* 粒子系统 - 更优雅的设计 */
+        /* 粒子系统 - 减少数量 */
         .particles {
             position: fixed;
             top: 0;
@@ -54,47 +54,37 @@
         
         .particle {
             position: absolute;
-            width: 2px;
-            height: 2px;
+            width: 1px;
+            height: 1px;
             background: #ffd700;
             border-radius: 50%;
-            animation: float 12s ease-in-out infinite;
-            box-shadow: 0 0 6px #ffd700;
-            opacity: 0.6;
+            animation: float 15s ease-in-out infinite;
+            box-shadow: 0 0 3px #ffd700;
+            opacity: 0.3;
         }
         
         .particle:nth-child(1) { left: 10%; animation-delay: 0s; }
-        .particle:nth-child(2) { left: 20%; animation-delay: 2s; }
-        .particle:nth-child(3) { left: 30%; animation-delay: 4s; }
-        .particle:nth-child(4) { left: 40%; animation-delay: 6s; }
-        .particle:nth-child(5) { left: 50%; animation-delay: 8s; }
-        .particle:nth-child(6) { left: 60%; animation-delay: 10s; }
-        .particle:nth-child(7) { left: 70%; animation-delay: 1s; }
-        .particle:nth-child(8) { left: 80%; animation-delay: 3s; }
-        .particle:nth-child(9) { left: 90%; animation-delay: 5s; }
-        .particle:nth-child(10) { left: 15%; animation-delay: 7s; }
-        .particle:nth-child(11) { left: 25%; animation-delay: 9s; }
-        .particle:nth-child(12) { left: 35%; animation-delay: 11s; }
-        .particle:nth-child(13) { left: 45%; animation-delay: 0.5s; }
-        .particle:nth-child(14) { left: 55%; animation-delay: 2.5s; }
-        .particle:nth-child(15) { left: 65%; animation-delay: 4.5s; }
+        .particle:nth-child(2) { left: 30%; animation-delay: 3s; }
+        .particle:nth-child(3) { left: 50%; animation-delay: 6s; }
+        .particle:nth-child(4) { left: 70%; animation-delay: 9s; }
+        .particle:nth-child(5) { left: 90%; animation-delay: 12s; }
         
         @keyframes float {
             0%, 100% { 
-                transform: translateY(100vh) scale(0.2);
+                transform: translateY(100vh) scale(0.1);
                 opacity: 0;
             }
             10% { 
-                opacity: 0.6;
+                opacity: 0.3;
                 transform: translateY(90vh) scale(1);
             }
             90% { 
-                opacity: 0.6;
+                opacity: 0.3;
                 transform: translateY(10vh) scale(1);
             }
         }
         
-        /* 发光线条 - 更简洁的设计 */
+        /* 发光线条 - 减少数量 */
         .glow-lines {
             position: fixed;
             top: 0;
@@ -110,47 +100,39 @@
             background: linear-gradient(90deg, transparent, #ffd700, transparent);
             height: 1px;
             border-radius: 50%;
-            animation: glowEnhanced 8s ease-in-out infinite;
-            box-shadow: 0 0 8px rgba(255, 215, 0, 0.3);
-            opacity: 0.4;
+            animation: glowEnhanced 10s ease-in-out infinite;
+            box-shadow: 0 0 4px rgba(255, 215, 0, 0.2);
+            opacity: 0.2;
         }
         
         .glow-line:nth-child(1) {
-            width: 200px;
-            top: 25%;
-            left: -50px;
+            width: 150px;
+            top: 30%;
+            left: -30px;
             transform: rotate(15deg);
             animation-delay: 0s;
         }
         
         .glow-line:nth-child(2) {
-            width: 150px;
-            top: 75%;
-            right: -30px;
+            width: 100px;
+            top: 80%;
+            right: -20px;
             transform: rotate(-20deg);
-            animation-delay: 4s;
-        }
-        
-        .glow-line:nth-child(3) {
-            width: 120px;
-            bottom: 30%;
-            left: 15%;
-            transform: rotate(45deg);
-            animation-delay: 8s;
+            animation-delay: 5s;
         }
         
         @keyframes glowEnhanced {
             0%, 100% { 
                 opacity: 0.1; 
-                transform: scaleX(0.5);
+                transform: scaleX(0.3);
             }
             50% { 
-                opacity: 0.4; 
-                transform: scaleX(1);
+                opacity: 0.2; 
+                transform: scaleX(0.8);
             }
         }
         
-        /* 星星背景 - 更简洁的设计 */
+        /* 星星背景 - 减少数量 */
         .stars {
             position: fixed;
             top: 0;
@@ -167,30 +149,24 @@
             height: 1px;
             background: #ffd700;
             border-radius: 50%;
-            animation: twinkleEnhanced 6s ease-in-out infinite;
-            box-shadow: 0 0 3px #ffd700;
-            opacity: 0.5;
+            animation: twinkleEnhanced 8s ease-in-out infinite;
+            box-shadow: 0 0 2px #ffd700;
+            opacity: 0.3;
         }
         
-        .star:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
-        .star:nth-child(2) { top: 20%; left: 80%; animation-delay: 1s; }
-        .star:nth-child(3) { top: 30%; left: 30%; animation-delay: 2s; }
-        .star:nth-child(4) { top: 40%; left: 70%; animation-delay: 3s; }
-        .star:nth-child(5) { top: 50%; left: 20%; animation-delay: 0.5s; }
-        .star:nth-child(6) { top: 60%; left: 90%; animation-delay: 1.5s; }
-        .star:nth-child(7) { top: 70%; left: 40%; animation-delay: 2.5s; }
-        .star:nth-child(8) { top: 80%; left: 60%; animation-delay: 3.5s; }
-        .star:nth-child(9) { top: 15%; left: 50%; animation-delay: 0.3s; }
-        .star:nth-child(10) { top: 85%; left: 15%; animation-delay: 1.3s; }
+        .star:nth-child(1) { top: 15%; left: 20%; animation-delay: 0s; }
+        .star:nth-child(2) { top: 35%; left: 80%; animation-delay: 2s; }
+        .star:nth-child(3) { top: 65%; left: 30%; animation-delay: 4s; }
+        .star:nth-child(4) { top: 85%; left: 70%; animation-delay: 6s; }
         
         @keyframes twinkleEnhanced {
             0%, 100% { 
-                opacity: 0.2; 
+                opacity: 0.1; 
                 transform: scale(0.8);
             }
             50% { 
-                opacity: 0.6; 
-                transform: scale(1.2);
+                opacity: 0.3; 
+                transform: scale(1.1);
             }
         }
         
@@ -438,62 +414,6 @@
             border-color: rgba(255, 215, 0, 0.5);
         }
         
-        /* 作者信息优化 */
-        .author-info {
-            margin-top: 80px;
-            padding: 40px;
-            background: rgba(255, 255, 255, 0.06);
-            border-radius: 20px;
-            border: 2px solid rgba(255, 215, 0, 0.15);
-            backdrop-filter: blur(15px);
-            animation: authorGlow 5s ease-in-out infinite;
-        }
-        
-        @keyframes authorGlow {
-            0%, 100% { 
-                box-shadow: 0 10px 30px rgba(255, 215, 0, 0.15);
-            }
-            50% { 
-                box-shadow: 0 20px 50px rgba(255, 215, 0, 0.25);
-            }
-        }
-        
-        .author-info h3 {
-            color: #ffd700;
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            text-shadow: 0 0 12px rgba(255, 215, 0, 0.4);
-        }
-        
-        .author-details {
-            display: flex;
-            justify-content: center;
-            gap: 50px;
-            flex-wrap: wrap;
-        }
-        
-        .author-detail {
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-        
-        .author-detail:hover {
-            transform: scale(1.05);
-        }
-        
-        .author-detail h4 {
-            color: #ff8c00;
-            font-size: 1.3rem;
-            margin-bottom: 8px;
-            text-shadow: 0 0 8px rgba(255, 140, 0, 0.4);
-        }
-        
-        .author-detail p {
-            color: #e0e0e0;
-            opacity: 0.9;
-            font-size: 1rem;
-        }
-        
         /* 响应式设计 */
         @media (max-width: 768px) {
             .title {
@@ -524,27 +444,12 @@
                 padding: 20px 40px;
                 font-size: 1.2rem;
             }
-            
-            .author-details {
-                flex-direction: column;
-                gap: 30px;
-            }
         }
     </style>
 </head>
 <body>
     <!-- 粒子系统 -->
     <div class="particles">
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
         <div class="particle"></div>
         <div class="particle"></div>
         <div class="particle"></div>
@@ -558,16 +463,9 @@
         <div class="star"></div>
         <div class="star"></div>
         <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
     </div>
     
     <div class="glow-lines">
-        <div class="glow-line"></div>
         <div class="glow-line"></div>
         <div class="glow-line"></div>
     </div>
@@ -596,25 +494,6 @@
         <div class="nav-links">
             <a href="kritaAI-course-detail.html" class="btn">📚 课程详情</a>
             <a href="kritaAI.html" class="btn">🛠️ 工具下载</a>
-        </div>
-        
-        <!-- 作者信息 -->
-        <div class="author-info">
-            <h3>🎨 课程讲师</h3>
-            <div class="author-details">
-                <div class="author-detail">
-                    <h4>杨瑞云</h4>
-                    <p>微客行文化创始人</p>
-                </div>
-                <div class="author-detail">
-                    <h4>艺术总监</h4>
-                    <p>专业数字艺术指导</p>
-                </div>
-                <div class="author-detail">
-                    <h4>AI设计专家</h4>
-                    <p>Krita AI技术研究</p>
-                </div>
-            </div>
         </div>
     </div>
 </body>

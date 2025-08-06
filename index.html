@@ -155,15 +155,97 @@
         .course-banner {
             margin: 40px 0;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .banner-content {
+            margin-bottom: 20px;
+            z-index: 3;
+            position: relative;
+        }
+        
+        .banner-title {
+            font-size: 2rem;
+            color: #ffd700;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+            font-weight: bold;
+        }
+        
+        .banner-subtitle {
+            font-size: 1.1rem;
+            color: #00ffff;
+            opacity: 0.9;
+            margin-bottom: 0;
+        }
+        
+        .course-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.1) 0%, rgba(255, 215, 0, 0.1) 100%);
+            border-radius: 16px;
+            z-index: -1;
         }
         
         .banner-image {
             max-width: 100%;
             height: auto;
-            border-radius: 12px;
-            box-shadow: 0 8px 32px rgba(0, 255, 255, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            box-shadow: 0 12px 40px rgba(0, 255, 255, 0.3);
+            border: 2px solid rgba(0, 255, 255, 0.2);
             backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .banner-image:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(0, 255, 255, 0.4);
+            border-color: rgba(0, 255, 255, 0.4);
+        }
+        
+        /* Banner装饰元素 */
+        .banner-decoration {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .banner-glow {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(0, 255, 255, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: bannerGlow 4s ease-in-out infinite;
+        }
+        
+        .banner-glow:nth-child(1) {
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .banner-glow:nth-child(2) {
+            bottom: 10%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+        
+        @keyframes bannerGlow {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.1); }
         }
         
         /* 软件界面模拟 */
@@ -580,6 +662,14 @@
                 font-size: 1.2rem;
             }
             
+            .banner-title {
+                font-size: 1.5rem;
+            }
+            
+            .banner-subtitle {
+                font-size: 1rem;
+            }
+            
             .main-interface {
                 grid-template-columns: 1fr;
                 height: auto;
@@ -630,7 +720,15 @@
         
         <!-- 课程总览Banner -->
         <div class="course-banner">
+            <div class="banner-content">
+                <h2 class="banner-title">🎨 KritaAI 课程总览</h2>
+                <p class="banner-subtitle">13小时系统化学习，掌握AI辅助绘画核心技能</p>
+            </div>
             <img src="KritaAI课程总览Banner.png" alt="KritaAI课程总览" class="banner-image">
+            <div class="banner-decoration">
+                <div class="banner-glow"></div>
+                <div class="banner-glow"></div>
+            </div>
         </div>
         
         <!-- 软件界面模拟 -->

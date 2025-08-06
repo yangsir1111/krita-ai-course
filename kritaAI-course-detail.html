@@ -372,7 +372,7 @@
             line-height: 1.7;
         }
 
-        /* 报名区域 - 更大气的设计 */
+        /* 报名区域 - 重新设计 */
         .enroll-section {
             background: rgba(255, 255, 255, 0.08);
             padding: 60px;
@@ -381,6 +381,27 @@
             border: 1px solid rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(15px);
             box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .enroll-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255, 215, 0, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 140, 0, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .enroll-content {
+            position: relative;
+            z-index: 2;
         }
 
         .enroll-section h3 {
@@ -393,7 +414,7 @@
         .price {
             font-size: clamp(3rem, 10vw, 5rem);
             font-weight: bold;
-            margin-bottom: 25px;
+            margin-bottom: 40px;
             color: #ffd700;
         }
 
@@ -403,198 +424,78 @@
             color: #b0b0b0;
         }
 
-        .features {
+        .enroll-visual {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: 1fr 1fr;
             gap: 40px;
+            align-items: center;
             margin: 50px 0;
         }
 
-        .feature {
-            text-align: center;
-            padding: 30px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .feature:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.2);
-        }
-
-        .feature-icon {
-            width: 80px;
-            height: 80px;
-            background: rgba(255, 215, 0, 0.15);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 2rem;
-            border: 2px solid rgba(255, 215, 0, 0.3);
-        }
-
-        .feature h4 {
-            margin-bottom: 15px;
-            color: #ffd700;
-            font-weight: 600;
-            font-size: 1.2rem;
-        }
-
-        .feature p {
-            opacity: 0.9;
-            font-size: 1rem;
-            color: #e0e0e0;
-        }
-        
-        /* 创意海报展示 */
-        .poster-showcase {
+        .enroll-poster {
             position: relative;
-            width: 100%;
-            height: 500px;
             border-radius: 20px;
             overflow: hidden;
-            margin-bottom: 80px;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            transition: all 0.4s ease;
         }
 
-        .creative-poster {
+        .enroll-poster:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+        }
+
+        .enroll-poster img {
             width: 100%;
-            height: 100%;
+            height: 400px;
             object-fit: cover;
             border-radius: 20px;
             transition: transform 0.5s ease;
         }
 
-        .poster-showcase:hover .creative-poster {
-            transform: scale(1.02);
+        .enroll-poster:hover img {
+            transform: scale(1.05);
         }
 
-        .poster-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 40px;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
-            border-bottom-left-radius: 20px;
-            border-bottom-right-radius: 20px;
-        }
-
-        .poster-title {
-            color: #fff;
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
-            letter-spacing: -0.02em;
-        }
-
-        .poster-subtitle {
-            color: #fff;
-            font-size: 1.2rem;
-            opacity: 0.95;
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
-            font-weight: 300;
-        }
-
-        /* 联系区域 */
-        .contact-section {
-            margin: 40px 0;
-        }
-        
-        .brand-info {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .brand-logo {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        
-        .boat-icon {
-            font-size: 2.5rem;
-            color: #ffd700;
-        }
-        
-        .brand-text {
+        .enroll-actions {
             display: flex;
             flex-direction: column;
+            align-items: center;
+            gap: 30px;
         }
-        
-        .brand-name {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #ffd700;
-            letter-spacing: 1px;
-        }
-        
-        .brand-subtitle {
-            font-size: 0.8rem;
-            color: #b0b0b0;
-            opacity: 0.8;
-        }
-        
-        .instructor-info {
-            text-align: right;
-        }
-        
-        .instructor-name {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #ffd700;
-            margin-bottom: 5px;
-        }
-        
-        .location {
-            font-size: 0.9rem;
-            color: #b0b0b0;
-            opacity: 0.8;
-        }
-        
-        /* 报名区域样式 */
+
         .enrollment-area {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            gap: 40px;
-            margin: 30px 0;
+            gap: 30px;
         }
-        
+
         .enroll-button-area {
             display: flex;
             flex-direction: column;
             align-items: center;
         }
-        
+
         .enroll-btn {
             display: flex;
             align-items: center;
-            gap: 10px;
-            padding: 20px 40px;
+            gap: 15px;
+            padding: 25px 50px;
             background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 140, 0, 0.2) 100%);
             color: #fff;
             text-decoration: none;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 1.2rem;
+            border-radius: 16px;
+            font-weight: 700;
+            font-size: 1.4rem;
             transition: all 0.3s ease;
             border: 2px solid rgba(255, 215, 0, 0.3);
             backdrop-filter: blur(10px);
-            box-shadow: 0 8px 30px rgba(255, 215, 0, 0.2);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.2);
             position: relative;
             overflow: hidden;
         }
-        
+
         .enroll-btn::before {
             content: '';
             position: absolute;
@@ -605,83 +506,84 @@
             background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.15), transparent);
             transition: left 0.5s ease;
         }
-        
+
         .enroll-btn:hover::before {
             left: 100%;
         }
-        
+
         .enroll-btn:hover {
             background: linear-gradient(135deg, rgba(255, 215, 0, 0.3) 0%, rgba(255, 140, 0, 0.3) 100%);
-            transform: translateY(-3px);
-            box-shadow: 0 15px 50px rgba(255, 215, 0, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(255, 215, 0, 0.3);
             border-color: rgba(255, 215, 0, 0.5);
         }
-        
+
         .arrow {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             color: #ffd700;
             animation: arrowPulse 2s ease-in-out infinite;
         }
-        
+
         @keyframes arrowPulse {
             0%, 100% { transform: translateX(0px); }
-            50% { transform: translateX(5px); }
+            50% { transform: translateX(8px); }
         }
-        
+
         .qr-section {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 15px;
+            gap: 20px;
         }
-        
+
         .qr-code {
-            width: 180px;
-            height: 180px;
+            width: 200px;
+            height: 200px;
             background: white;
-            border-radius: 8px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
         }
-        
+
         .qr-logo-image {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 4px;
+            border-radius: 8px;
         }
-        
+
         .qr-instruction {
             color: #fff;
-            font-size: 0.9rem;
+            font-size: 1rem;
             text-align: center;
             opacity: 0.9;
+            font-weight: 500;
         }
-        
+
         .back-home {
             text-align: center;
-            margin-top: 30px;
+            margin-top: 40px;
         }
-        
+
         .btn-secondary {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 16px 32px;
+            padding: 18px 36px;
             background: rgba(255, 255, 255, 0.05);
             color: #ffffff;
             text-decoration: none;
             border-radius: 12px;
             border: 1px solid rgba(255, 255, 255, 0.1);
             font-weight: 500;
-            font-size: 1rem;
+            font-size: 1.1rem;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             backdrop-filter: blur(10px);
         }
-        
+
         .btn-secondary:hover {
             background: rgba(255, 255, 255, 0.1);
             border-color: rgba(255, 255, 255, 0.3);
@@ -722,17 +624,21 @@
             .enroll-section {
                 padding: 30px 20px;
             }
-            
-            .enrollment-area {
-                flex-direction: column;
+
+            .enroll-visual {
+                grid-template-columns: 1fr;
                 gap: 30px;
             }
-            
-            .enroll-btn {
-                padding: 16px 32px;
-                font-size: 1.1rem;
+
+            .enroll-poster img {
+                height: 300px;
             }
-            
+
+            .enroll-btn {
+                padding: 20px 40px;
+                font-size: 1.2rem;
+            }
+
             .qr-code {
                 width: 150px;
                 height: 150px;
@@ -914,25 +820,33 @@
         </div>
 
         <div class="enroll-section">
-            <h3>立即开始学习</h3>
-            <div class="price">
-                ¥399 <small>原价 ¥699</small>
-            </div>
-            
-            <div class="contact-section">
-                <div class="enrollment-area">
-                    <div class="enroll-button-area">
-                        <a href="#" class="enroll-btn">
-                            立即报名
-                            <div class="arrow">→</div>
-                        </a>
+            <div class="enroll-content">
+                <h3>立即开始学习</h3>
+                <div class="price">
+                    ¥399 <small>原价 ¥699</small>
+                </div>
+                
+                <div class="enroll-visual">
+                    <div class="enroll-poster">
+                        <img src="Graffiti Mix·灵感狂飙风格海报.png" alt="KritaAI创意涂鸦海报">
                     </div>
                     
-                    <div class="qr-section">
-                        <div class="qr-code">
-                            <img src="logo.jpg" alt="WAKERO ANIMATION STUDIOS" class="qr-logo-image">
+                    <div class="enroll-actions">
+                        <div class="enrollment-area">
+                            <div class="enroll-button-area">
+                                <a href="#" class="enroll-btn">
+                                    立即报名
+                                    <div class="arrow">→</div>
+                                </a>
+                            </div>
+                            
+                            <div class="qr-section">
+                                <div class="qr-code">
+                                    <img src="logo.jpg" alt="WAKERO ANIMATION STUDIOS" class="qr-logo-image">
+                                </div>
+                                <p class="qr-instruction">扫一扫上面的二维码图案，加我为朋友</p>
+                            </div>
                         </div>
-                        <p class="qr-instruction">扫一扫上面的二维码图案，加我为朋友</p>
                     </div>
                 </div>
                 
